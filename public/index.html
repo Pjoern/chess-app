@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>Chess App</title>
+        <link
+            rel="stylesheet"
+            href="chessboard.css"
+        >
+        <link
+            rel="stylesheet"
+            href="style.css"
+        >
+        <link
+            rel="icon"
+            href="favicon.ico"
+            type="image/x-icon"
+        >
+    </head>
+
+    <body>
+        <header>
+            <h1>Chess App</h1>
+        </header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Play</a></li>
+                    <li><a href="#">Analysis</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+            <main>
+                <div id="board-container">
+                    <div id="board"></div>
+                    <div id="side-panel">
+                        <div id="notation"></div>
+                        <div id="openings"></div>
+                        <div id="possible-moves">
+                            <h3>Possible Moves</h3>
+                            <ul id="moves-list"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="controls">
+                    <button id="prevBtn">◀</button>
+                    <button id="nextBtn">▶</button>
+                    <button id="resetBtn">Reset</button>
+                    <button id="savePositionBtn">Save Position</button>
+                </div>
+                <div id="saved-positions">
+                    <h3>Saved Positions</h3>
+                    <ul id="positions-list"></ul>
+                </div>
+                <div id="notes-section">
+                    <h3>Notes</h3>
+                    <label for="notes">Enter your notes:</label>
+                    <textarea
+                        id="notes"
+                        rows="5"
+                        cols="30"
+                        placeholder="Enter your notes here..."
+                    ></textarea>
+                    <button id="saveNotesBtn">Save Notes</button>
+                    <div id="notes-list"></div>
+                </div>
+            </main>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
+        <script src="/js/chessboard.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,117 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+nav {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+#board-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+#board {
+  width: 400px;
+  margin: 20px;
+}
+
+#side-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#controls button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#controls button:hover {
+  background-color: #e0e0e0;
+}
+
+#notation,
+#openings,
+#possible-moves {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#saved-positions {
+  margin-top: 20px;
+  width: 100%;
+}
+
+#saved-positions ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#notes-section {
+  margin-top: 20px;
+  width: 100%;
+}
+
+#notes-section textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#notes-list {
+  margin-top: 10px;
+}
