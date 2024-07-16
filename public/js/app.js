@@ -39,7 +39,7 @@ $(document).ready(function () {
         return (index % 2 === 0 ? Math.floor(index / 2) + 1 + '. ' : ' ') + move.san;
       })
       .join(' ');
-    $('#notation').html(notation);
+    $('#notation-content').html(notation);
   }
 
   function updateOpenings() {
@@ -53,9 +53,9 @@ $(document).ready(function () {
     })
       .then((response) => response.json())
       .then((data) => {
-        $('#openings').html('<strong>Openings:</strong> ' + data.openings.join(', '));
+        $('#openings-content').html(data.openings.join(', '));
       })
-      .catch((error) => console.error('Error fetching openings:', error)); // Fehlerbehandlung hinzufügen
+      .catch((error) => console.error('Error fetching openings:', error));
   }
 
   function updatePossibleMoves() {
@@ -69,35 +69,32 @@ $(document).ready(function () {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Move scores:', data); // Debugging-Ausgabe hinzufügen
+        console.log('Move scores:', data);
         if (!data.moveScores) {
           throw new Error('moveScores is undefined');
         }
 
-        // Sort the moves by score in ascending order (best moves first) and limit to top 5
         var topMoves = data.moveScores.sort((a, b) => a.score - b.score).slice(0, 5);
-
-        // Get the current move number
         var nextMoveNumber = Math.floor(history.length / 2) + 1;
 
         var movesList = topMoves
           .map(function (move) {
-            var targetSquare = move.move.slice(-2); // get only the target square
+            var targetSquare = move.move.slice(-2);
             var moveNumber =
               history.length % 2 === 0 ? nextMoveNumber + '. ' : nextMoveNumber + '... ';
             return `<li>${moveNumber}${targetSquare}: ${move.score}</li>`;
           })
           .join('');
-        $('#moves-list').html(`<ul>${movesList}</ul>`);
+        $('#movesList').html(movesList);
       })
-      .catch((error) => console.error('Error fetching move scores:', error)); // Fehlerbehandlung hinzufügen
+      .catch((error) => console.error('Error fetching move scores:', error));
   }
 
   $('#prevBtn').on('click', function () {
     if (currentMove > 0) {
       currentMove--;
       game.undo();
-      board.position(game.fen(), false); // update the board position without animation
+      board.position(game.fen(), false);
       updateNotation();
       updatePossibleMoves();
     }
@@ -107,7 +104,7 @@ $(document).ready(function () {
     if (currentMove < history.length - 1) {
       currentMove++;
       game.move(history[currentMove]);
-      board.position(game.fen(), false); // update the board position without animation
+      board.position(game.fen(), false);
       updateNotation();
       updatePossibleMoves();
     }
@@ -117,10 +114,10 @@ $(document).ready(function () {
     game.reset();
     history = [];
     currentMove = -1;
-    board.position('start', false); // reset the board to the start position without animation
-    $('#notation').html('');
-    $('#openings').html('');
-    $('#moves-list').html('');
+    board.position('start', false);
+    $('#notation-content').html('');
+    $('#openings-content').html('');
+    $('#movesList').html('');
   });
 
   $('#savePositionBtn').on('click', function () {
@@ -163,6 +160,5 @@ $(document).ready(function () {
     $('#notes-list').html(notesList);
   }
 
-  // Initial possible moves update
   updatePossibleMoves();
 });
